@@ -6,4 +6,5 @@
 
 ChessBoard* LDFS(ChessBoard* main);
 ChessBoard* BFS(ChessBoard* main);
-ChessBoard* IDS(ChessBoard* main);
+ChessBoard* IDS(ChessBoard* main, int max_depth = ChessBoard::FIELD_SIZE);
+TreeNode* DLS(TreeNode* src, int limit, int pos = 0);

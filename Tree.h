@@ -1,5 +1,4 @@
 #pragma once
-#include "const.h"
 #include "ChessBoard.h"
 
 class TreeNode
@@ -8,9 +7,12 @@ class TreeNode
 	ChessBoard* data;
 	int childNum;
 public:	
-	TreeNode(ChessBoard*, int);
+	TreeNode(ChessBoard*, int num = 2);
 	TreeNode* insertNode(ChessBoard*, int); 
 	TreeNode** getNodePointer();
 	ChessBoard* getNodeData();
+	int getChildNum();
+	TreeNode* getCertainChild(int);
+	void deleteTree();
 	~TreeNode();
 };

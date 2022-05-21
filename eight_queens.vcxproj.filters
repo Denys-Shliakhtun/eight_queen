@@ -35,9 +35,6 @@
     <ClInclude Include="Tree.h">
       <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="const.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
     <ClInclude Include="ChessBoard.h">
       <Filter>Header files</Filter>
     </ClInclude>
@@ -62,6 +59,9 @@
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="Tree.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChessBoard.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
   </ItemGroup>

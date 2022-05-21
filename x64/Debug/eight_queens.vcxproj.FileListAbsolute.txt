@@ -1,4 +1,5 @@
 E:\university\II semester\kursach\project\eight_queens\x64\Debug\eight_queens.Form1.resources
 E:\university\II semester\kursach\project\eight_queens\x64\Debug\eight_queens.vcxproj.GenerateResource.cache
 E:\university\II semester\kursach\project\eight_queens\x64\Debug\eight_queens.exe
-e:\university\II semester\kursach\project\eight_queens\x64\Debug\eight_queens.vcxproj.AssemblyReference.cache
+E:\university\II semester\kursach\project\eight_queens\x64\Debug\eight_queens.vcxproj.AssemblyReference.cache
+E:\university\II semester\kursach\project\eight_queens\x64\Debug\app.ico

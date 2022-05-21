@@ -5,7 +5,11 @@
       <FullPath>E:\university\II semester\kursach\project\eight_queens\x64\Debug\eight_queens.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
-  <ContentFiles />
+  <ContentFiles>
+    <ContentFile>
+      <FullPath>E:\university\II semester\kursach\project\eight_queens\app.ico</FullPath>
+    </ContentFile>
+  </ContentFiles>
   <SatelliteDlls />
   <NonRecipeFileRefs />
 </Project>
