@@ -16,7 +16,7 @@ public:
 
 	ChessBoard(ChessBoard* prev);
 
-	ChessBoard(ChessBoard* prev, int pos1, int pos2 = -1);
+	ChessBoard(ChessBoard* prev, int pos1, int pos2 = -1, int orientation = 1);
 
 	void setValue();
 
@@ -30,12 +30,16 @@ public:
 	bool queenCheckDiagonal(int a, int b);
 
 	std::vector<std::vector<int>> ChessBoard::getQueenPos();
+	
+	int getQueenHitNumber();
 
 	void insertQueen(int x, int y);
 
 	void removeQueen(int x, int y);
 
 	void fileOutput();
+
+	std::vector<ChessBoard*> boardBestArrGen();
 
 	~ChessBoard();
 };

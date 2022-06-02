@@ -37,29 +37,29 @@ TreeNode* TreeNode::getCertainChild(int num)
 	return nodePointer[num];
 }
 
+void TreeNode::deleteCertainChild(int num)
+{
+	delete nodePointer[num];
+	nodePointer[num] = NULL;
+}
+
+void TreeNode::deleteTreeBranch(TreeNode* node)
+{
+	if (node == NULL)
+		return;
+
+	for (int i = 0; i < childNum; i++)
+		deleteTreeBranch(node->getCertainChild(i));	
+
+	delete node;
+}
+
 void TreeNode::deleteTree()
 {
-	std::queue <TreeNode*> plan;
-	TreeNode* temp;
 	for (int i = 0; i < childNum; i++)
 	{
-		temp = nodePointer[i];
-		if (temp!=NULL)
-			plan.push(temp);
-	}
-	TreeNode* temp2;
-	while (plan.size()>0)
-	{
-		temp = plan.front();
-		plan.pop();
-		for (int j = 0; j < temp->getChildNum(); j++)
-		{
-			temp2 = temp->getCertainChild(j);
-			if(temp2 != NULL)
-				plan.push(temp2);
-		}
-		if (temp!=NULL)
-			delete temp;
+		deleteTreeBranch(nodePointer[i]);
+		nodePointer[i] = NULL;
 	}
 }
 

@@ -1,6 +1,5 @@
 
 #include "pch.h"
-#include "Header.h"
 using namespace System;
 
 //int main(array<System::String ^> ^args)

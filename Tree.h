@@ -13,6 +13,8 @@ public:
 	ChessBoard* getNodeData();
 	int getChildNum();
 	TreeNode* getCertainChild(int);
+	void deleteCertainChild(int);
+	void TreeNode::deleteTreeBranch(TreeNode* node);
 	void deleteTree();
 	~TreeNode();
 };
