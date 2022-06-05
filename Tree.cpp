@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Tree.h"
-#include "queue"
+#include <queue>
+using namespace Local;
 
 TreeNode::TreeNode(ChessBoard* param, int num)
 {
@@ -17,11 +18,6 @@ TreeNode* TreeNode::insertNode(ChessBoard* param, int pos)
 	return nodePointer[pos];
 }
 
-TreeNode** TreeNode::getNodePointer()
-{
-	return nodePointer;
-}
-
 ChessBoard* TreeNode::getNodeData() 
 { 
 	return data; 
@@ -35,12 +31,6 @@ int TreeNode::getChildNum()
 TreeNode* TreeNode::getCertainChild(int num)
 {
 	return nodePointer[num];
-}
-
-void TreeNode::deleteCertainChild(int num)
-{
-	delete nodePointer[num];
-	nodePointer[num] = NULL;
 }
 
 void TreeNode::deleteTreeBranch(TreeNode* node)

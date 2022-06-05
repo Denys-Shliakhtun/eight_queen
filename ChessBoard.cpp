@@ -17,9 +17,15 @@ void ChessBoard::setBoard(ChessBoard* prev)
 			board[i][j] = prev->board[i][j];
 }
 
+void ChessBoard::setEmptyBoard() {
+	for (int i = 0; i < FIELD_SIZE; i++)
+		for (int j = 0; j < FIELD_SIZE; j++)
+			board[i][j] = 0;
+}
+
 ChessBoard::ChessBoard() {
 	pointerDecl();
-	setValue();
+	setEmptyBoard();
 }
 
 ChessBoard::ChessBoard(ChessBoard* prev) {
@@ -59,12 +65,22 @@ ChessBoard::ChessBoard(ChessBoard* prev, int pos1, int pos2, int orientation)
 	}
 }
 
-void ChessBoard::setValue() {
-	for (int i = 0; i < FIELD_SIZE; i++)	
-		for (int j = 0; j < FIELD_SIZE; j++)		
-			board[i][j] = 0;	
+//true if can calculate
+bool ChessBoard::queenFirstCheck()
+{
+	int counter = 0;
+	for (int i = 0; i < FIELD_SIZE; i++)
+		for (int j = 0; j < FIELD_SIZE; j++)
+			if (board[i][j] != 0)
+			{
+				counter++;
+				if (queenCheckStraight(i, j))
+					return false;
+			}
+	return counter == FIELD_SIZE;
 }
 
+//true if queen hits another queen
 bool ChessBoard::queenCheck()
 {
 	bool flag = false;
@@ -75,6 +91,7 @@ bool ChessBoard::queenCheck()
 	return flag;
 }
 
+//true if queen hits another queen
 bool ChessBoard::queenCheckStraight(int a, int b)
 {
 	for (int i = 1; i < FIELD_SIZE; i++)
@@ -87,6 +104,7 @@ bool ChessBoard::queenCheckStraight(int a, int b)
 	return false;
 }
 
+//true if queen hits another queen
 bool ChessBoard::queenCheckDiagonal(int a, int b)
 {
 	int tempa = a, tempb = b;
@@ -124,18 +142,24 @@ bool ChessBoard::queenCheckDiagonal(int a, int b)
 	return false;
 }
 
-void ChessBoard::fileOutput()
+bool sortVec(std::vector<int> v1, std::vector<int> v2)
 {
-	std::ofstream fileOut("output.txt");
+	return (v1[2] > v2[2]);
+}
+
+std::vector<std::vector<int>> ChessBoard::getQueenPos()
+{
+	std::vector<std::vector<int>> result;
 	for (int i = 0; i < FIELD_SIZE; i++)
 	{
 		for (int j = 0; j < FIELD_SIZE; j++)
 		{
-			fileOut << (board[i][j] == 0 ? '*' : 'q') << ' ';
+			if (board[i][j] != 0)
+				result.push_back({ i, j, board[i][j] });
 		}
-		fileOut << std::endl;
 	}
-	fileOut.close();
+	sort(result.begin(), result.end(), sortVec);
+	return result;
 }
 
 void ChessBoard::insertQueen(int x, int y)
@@ -160,26 +184,6 @@ void ChessBoard::removeQueen(int x, int y)
 	board[x % FIELD_SIZE][y % FIELD_SIZE] = 0;
 }
 
-bool sortVec(std::vector<int> v1, std::vector<int> v2)
-{
-	return (v1[2] > v2[2]);
-}
-
-std::vector<std::vector<int>> ChessBoard::getQueenPos()
-{
-	std::vector<std::vector<int>> result;
-	for (int i = 0; i < FIELD_SIZE; i++)
-	{
-		for (int j = 0; j < FIELD_SIZE; j++)
-		{
-			if(board[i][j]!=0)
-				result.push_back({ i, j, board[i][j] });
-		}
-	}
-	sort(result.begin(), result.end(), sortVec);
-	return result;
-}
-
 int ChessBoard::getQueenHitNumber()
 {
 	int count = 0;
@@ -193,30 +197,6 @@ int ChessBoard::getQueenHitNumber()
 		}
 	}
 	return count;
-}
-
-//true if can calculate
-bool ChessBoard::queenFirstCheck()
-{
-	int counter = 0;
-	for (int i = 0; i < FIELD_SIZE; i++)
-		for (int j = 0; j < FIELD_SIZE; j++)
-			if (board[i][j] != 0)
-			{
-				counter++;
-				if (queenCheckStraight(i, j))
-					return false;
-			}
-	return counter == FIELD_SIZE;
-}
-
-ChessBoard::~ChessBoard()
-{
-	for (int i = 0; i < FIELD_SIZE; i++)
-	{
-		delete[FIELD_SIZE] board[i];
-	}
-	delete[FIELD_SIZE] board;
 }
 
 std::vector<ChessBoard*> ChessBoard::boardBestArrGen()
@@ -247,4 +227,26 @@ std::vector<ChessBoard*> ChessBoard::boardBestArrGen()
 
 	delete[] tempboard;
 	return result;
+}
+
+void ChessBoard::fileOutput(std::ofstream& fileOut)
+{
+
+	for (int i = 0; i < FIELD_SIZE; i++)
+	{
+		for (int j = 0; j < FIELD_SIZE; j++)
+		{
+			fileOut << (board[i][j] == 0 ? '*' : 'q') << ' ';
+		}
+		fileOut << std::endl;
+	}
+}
+
+ChessBoard::~ChessBoard()
+{
+	for (int i = 0; i < FIELD_SIZE; i++)
+	{
+		delete[FIELD_SIZE] board[i];
+	}
+	delete[FIELD_SIZE] board;
 }

@@ -1,0 +1,5 @@
+e:\university\II semester\kursach\project\eight_queens\Release\eight_queens.vcxproj.AssemblyReference.cache
+e:\university\II semester\kursach\project\eight_queens\Release\eight_queens.Form1.resources
+e:\university\II semester\kursach\project\eight_queens\Release\eight_queens.vcxproj.GenerateResource.cache
+E:\university\II semester\kursach\project\eight_queens\Release\app.ico
+e:\university\II semester\kursach\project\eight_queens\Release\eight_queens.exe

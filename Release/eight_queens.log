@@ -1,0 +1,8 @@
+﻿  Form1.cpp
+e:\university\II semester\kursach\project\eight_queens\Form1.h(209,20): warning C4018: '<': signed/unsigned mismatch
+e:\university\II semester\kursach\project\eight_queens\Form1.h(298,20): warning C4018: '<': signed/unsigned mismatch
+  main.cpp
+e:\university\II semester\kursach\project\eight_queens\Form1.h(209,20): warning C4018: '<': signed/unsigned mismatch
+e:\university\II semester\kursach\project\eight_queens\Form1.h(298,20): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  eight_queens.vcxproj -> E:\university\II semester\kursach\project\eight_queens\Release\eight_queens.exe

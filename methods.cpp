@@ -1,7 +1,9 @@
 #include "pch.h"
 #include "methods.h"
 
-void stressTest()
+using namespace Local;
+/*
+bool stressTest()
 {
 	bool flag;
 	ChessBoard* temp, * temp2;
@@ -34,13 +36,15 @@ void stressTest()
 				temp->insertQueen(i % (int)pow(10, j + 1) / (int)pow(10, j) - 1, j);
 			}
 			temp2 = BFS(temp);
-			if (temp2 == NULL)
-				temp2 = NULL;
+			if (temp2 == NULL || temp2->getData()->queenCheck())
+				return false;
 			//displayResult(temp2);
 			delete temp, temp2;
 		}
 	}
+	return true;
 }
+*/
 
 ChessBoard* LDFS(ChessBoard* main)
 {
@@ -115,7 +119,7 @@ ChessBoard* BFS(ChessBoard* main)
 		plan.pop();
 		delete temp;
 	}
-	temp2->getNodeData()->fileOutput();
+	
 	return temp2->getNodeData();
 }
 
@@ -130,7 +134,7 @@ ChessBoard* IDS(ChessBoard* main, int max_depth)
 		temp = DLS(head, i);
 		if (temp != NULL)
 		{
-			temp->getNodeData()->fileOutput();
+			
 			ChessBoard* board = new ChessBoard(temp->getNodeData());
 			head->deleteTree();
 			//delete head;

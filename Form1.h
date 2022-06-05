@@ -19,9 +19,12 @@ namespace CppCLRWinformsProject {
 		Form1(void)
 		{
 			InitializeComponent();
-			this->pictureBox1->Image = Image::FromFile("board.jpg");
+			queenImage = Image::FromFile("queen64.png");
+			boardImage = Image::FromFile("board.jpg");
+			this->pictureBox1->Image = boardImage;
 			this->pictureBox1->SizeMode = PictureBoxSizeMode::StretchImage;
-			this->board = new ChessBoard();
+			this->board = new ChessBoard();			
+			graphics = pictureBox1->CreateGraphics();
 			
 			//
 			//TODO: Konstruktorcode hier hinzufügen.
@@ -32,33 +35,36 @@ namespace CppCLRWinformsProject {
 		/// <summary>
 		/// Verwendete Ressourcen bereinigen.
 		/// </summary>
-		~Form1()
-		{
-			if (components)
-			{
-				delete components;
-			}
-		}
+		/// 
+		
+		//~Form1()
+		//{
+		//	/*
+		//	if (components)
+		//	{
+		//		delete components;
+		//	}
+		//	*/
+		//}
+		
 	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::ComboBox^ comboBox1;
-
-
-	private: ChessBoard* board;
+	private: System::Windows::Forms::ComboBox^ comboBox1;	
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: ChessBoard* board;
 	private: PictureBox^ picturebox;
 	private: Graphics^ graphics;
+	private: Image^ queenImage;
+	private: Image^ boardImage;
 
 
 
-	protected:
 
-	private:
 		/// <summary>
 		/// Erforderliche Designervariable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+	//private: System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -150,146 +156,20 @@ namespace CppCLRWinformsProject {
 		}
 #pragma endregion
 	
-	private: System::Void pictureBoxRemove(System::Object^ sender, System::EventArgs^ e)	
-	{
-		
-		//delete sender;
-		System::Drawing::Point pos = this->PointToClient(Cursor->Position);
-		this->board->removeQueen((pos.Y - 10) / 64, (pos.X - 10) / 64);
-		displayResult(this->board);
-	}
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e);
+
+	private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e);
+
+	public:  System::Void displayResult(ChessBoard* board);
+
+	private: System::Void displayResult(ChessBoard* board, ChessBoard* prev);
+
+	private: System::Void displayArrows(ChessBoard* first, ChessBoard* second);
 
 	private: System::Void createPictureQueen(int x, int y, int num);
-	/*
-	{
-		System::Windows::Forms::PictureBox^ pictureBox = (gcnew System::Windows::Forms::PictureBox());
-		pictureBox->Image = Image::FromFile("queen64.png");
-		pictureBox->ClientSize = System::Drawing::Size(64, 64);
-		pictureBox->Anchor = System::Windows::Forms::AnchorStyles::None;
 
-		pictureBox->Location = System::Drawing::Point(64 * x, 64 * y);
-		pictureBox->Margin = System::Windows::Forms::Padding(0, 0, 0, 0);
-		pictureBox->Name = L"pictureBox" + num;
-		pictureBox->TabIndex = 2;
-		pictureBox->TabStop = false;
-
-		pictureBox->BackColor = System::Drawing::Color::Transparent;
-
-		this->pictureBox1->Controls->Add(pictureBox);
-		//this->pictureBox1->Controls->;
-		pictureBox->BringToFront();
-		pictureBox->Click += gcnew System::EventHandler(this, &Form1::pictureBoxRemove);
-		
-	}
-	*/
-	private: System::Void displayResult(ChessBoard* board)
-	{
-		//if (graphics)
-		//	this->Invalidate();
-		std::vector<std::vector<int>> queenPos = board->getQueenPos();
-		this->pictureBox1->CreateControl();
-		for (int i = 0; i < queenPos.size() +1; i++)
-		{
-
-			if (this->pictureBox1->Controls->ContainsKey((L"pictureBox" + i)))
-				this->pictureBox1->Controls->RemoveByKey((L"pictureBox" + i));
-		}
-		
-		
-		for(int i = 0; i < queenPos.size(); i++)
-		{
-			
-			createPictureQueen(queenPos[i][1], queenPos[i][0], i);
-		}
+	private: System::Void deletePictureQueen(System::Object^ sender, System::EventArgs^ e);	
 	
-	}
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		
-		if(this->board->queenFirstCheck())
-		{
-			if (!this->board->queenCheck())
-			{
-				MessageBox::Show("The position of figures is right. No method is applied!", "Completed!");
-				return;
-			}
-			int choice = this->comboBox1->SelectedIndex;		
-			ChessBoard* result = this->board;
-			switch (choice)
-			{
-			case 0:
-				result = LDFS(this->board);
-				if (result== NULL)
-					MessageBox::Show("The method cannot solve the task! The stack is too large!", "Error!");
-				break;
-			case 1:
-				result = BFS(this->board);
-				break;
-			case 2:
-				result = IDS(new ChessBoard(this->board), 100);
-				if (result == NULL)
-					MessageBox::Show("The method cannot solve the task! The depth is not enough!", "Error!"); 
-				break;
-			default:
-				MessageBox::Show("Method is not selected!", "Error!");
-			}
-			
-			if (result != NULL)
-			{
-				displayResult(result);
-				displayArrows(this->board, result);
-				MessageBox::Show("The task is solved!", "Completed!");
-				delete this->board;
-				this->board = result;
-			}
-		}
-		else
-			MessageBox::Show("Wrong placement!", "Error!");
-		
-	}
-
-private: System::Void pictureBox1_LoadCompleted(System::Object^ sender, System::ComponentModel::AsyncCompletedEventArgs^ e) {
-	this->pictureBox1->Image = Image::FromFile("board.jpg");
-}
-private: System::Void displayArrows(ChessBoard* first, ChessBoard* second){
-	std::vector<std::vector<int>> posFirst = first->getQueenPos();
-	std::vector<std::vector<int>> posSecond = second->getQueenPos();
-	/*
-	picturebox = gcnew PictureBox;
-	
-	picturebox->BackColor = System::Drawing::Color::Transparent;
-	picturebox->Location = System::Drawing::Point(1, 1);
-	picturebox->Margin = System::Windows::Forms::Padding(0);
-	picturebox->Name = L"pictureBox2";
-	picturebox->Size = System::Drawing::Size(510, 510);
-	picturebox->TabStop = false;
-	picturebox->Enabled = true;
-	this->pictureBox1->Controls->Add(picturebox);*/
-	graphics = pictureBox1->CreateGraphics();
-	
-	Point a, b;
-	Pen^ p = gcnew Pen(Color::Red);
-	p->Width = 6.0F;
-	//p->DashStyle = Pen::DashStyle::DashPattern::
-	//p->LineJoin = System::Drawing::Drawing2D::LineJoin::Bevel;
-	p->EndCap = Drawing::Drawing2D::LineCap::ArrowAnchor;
-	for (int i = 0; i < posFirst.size(); i++)
-	{
-		a.X = posFirst[i][1] * 64 + 32;
-		a.Y = posFirst[i][0] * 64 + 32;
-		b.X = posSecond[i][1] * 64 + 32;
-		b.Y = posSecond[i][0] * 64 + 32;
-		graphics->DrawLine(p, a, b);
-	}
-}
-private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
-	System::Drawing::Point pos = this->PointToClient(Cursor->Position); //pos.PointToClient()
-	//pos.X; pos.Y;
-	//createPictureQueen((pos.X-10)/64, (pos.Y - 10)/64, 0);
-	this->board->insertQueen((pos.Y-10) / 64, (pos.X-10) / 64);
-	displayResult(board);
-}
-
-	   
-
-};
+	private:  bool stressTest();
+	};
 }
