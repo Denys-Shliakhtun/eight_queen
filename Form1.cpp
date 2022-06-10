@@ -3,9 +3,9 @@
 namespace CppCLRWinformsProject {
 	System::Void Form1::deletePictureQueen(System::Object^ sender, System::EventArgs^ e)
 	{
-		System::Drawing::Point pos = this->PointToClient(Cursor->Position);
-		this->board->removeQueen((pos.Y - 10) / 64, (pos.X - 10) / 64);
-		displayResult(this->board);
+		System::Drawing::Point pos = this->pictureBox1->PointToClient(Cursor->Position);
+		this->board->removeQueen((pos.Y) / 64, (pos.X) / 64);
+		displayBoard(this->board);
 	}
 	
 	System::Void Form1::createPictureQueen(int x, int y, int num)
@@ -25,32 +25,23 @@ namespace CppCLRWinformsProject {
 		pictureBox->Click += gcnew System::EventHandler(this, &Form1::deletePictureQueen);
 	}
 
-	System::Void Form1::displayResult(ChessBoard* board)
+	System::Void Form1::displayBoard(ChessBoard* board)
 	{
-		if (graphics)
-			this->Invalidate();
-
 		std::vector<std::vector<int>> queenPos = board->getQueenPos();
 
 		int i = 0;
-		while (this->pictureBox1->Controls->ContainsKey((L"pictureBox" + i)))
+		while (FormPointer->pictureBox1->Controls->ContainsKey((L"pictureBox" + i)))
 		{
-			Control^ ctrl = this->pictureBox1->Controls->Find(L"pictureBox" + i, false)[0];
+			Control^ ctrl = FormPointer->pictureBox1->Controls->Find(L"pictureBox" + i, false)[0];
 			delete ctrl;
-			this->pictureBox1->Controls->RemoveByKey((L"pictureBox" + i));			
+			FormPointer->pictureBox1->Controls->RemoveByKey((L"pictureBox" + i));
 			i++;
 		}
 
 		for (int i = 0; i < queenPos.size(); i++)
-			createPictureQueen(queenPos[i][1], queenPos[i][0], i);
+			FormPointer->createPictureQueen(queenPos[i][1], queenPos[i][0], i);
 		
-		this->pictureBox1->Refresh();
-	}
-
-	System::Void Form1::displayResult(ChessBoard* board, ChessBoard* prev)
-	{
-		displayResult(board);
-		displayArrows(prev, board);
+		FormPointer->pictureBox1->Refresh();
 	}
 
 	System::Void Form1::button1_Click(System::Object^ sender, System::EventArgs^ e) 
@@ -59,13 +50,14 @@ namespace CppCLRWinformsProject {
 		//	MessageBox::Show("Stress test is completed!", "Completed!");
 		if (this->board->queenFirstCheck())
 		{
-			std::ofstream fileOutput("output.txt");
-			fileOutput << "Input:\n";
+			std::ofstream fileOutput("output.txt", std::ios::app);
+			time_t current_time = time(0);
+			fileOutput << "------------------------\n" << ctime(&current_time) << "\nInput:\n";
 			this->board->fileOutput(fileOutput);
 			if (!this->board->queenCheck())
 			{
-				MessageBox::Show("The position of figures is right. No method is applied!", "Completed!");
-				fileOutput << "\nThe position of figures is right. No method is applied!";
+				MessageBox::Show("The position of figures is right. No method is applied!", "Completed!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				fileOutput << "\nThe position of figures is right. No method is applied!\n\n\n";
 				fileOutput.close();
 				return;
 			}
@@ -75,10 +67,7 @@ namespace CppCLRWinformsProject {
 			{
 			case 0:
 				result = LDFS(this->board);
-				if (result == NULL)
-					MessageBox::Show("The method cannot solve the task! The stack is overflowed!", "Error!");
-				else
-					fileOutput << "\nLDFS method:\n";
+				fileOutput << "\nLDFS method:\n";
 				break;
 			case 1:
 				result = BFS(this->board);
@@ -87,29 +76,33 @@ namespace CppCLRWinformsProject {
 			case 2:
 				result = IDS(new ChessBoard(this->board), 100);
 				if (result == NULL)
-					MessageBox::Show("The method cannot solve the task! The depth is not enough!", "Error!");
+					MessageBox::Show("The method cannot solve the task! The depth is not enough!", "Error!", MessageBoxButtons::OK, MessageBoxIcon::Error);
 				else
 					fileOutput << "\nIDS method:\n";
 				break;
 			default:
-				MessageBox::Show("Method is not selected!", "Error!");
-				fileOutput << "\nError! No method was selected!";
+				MessageBox::Show("Method is not selected!", "Error!", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				fileOutput << "\nError! No method was selected!\n\n\n";
 			}
 
 			if (result != NULL)
 			{
 
-				displayResult(result, this->board);
-				MessageBox::Show("The task is solved!", "Completed!");
+				displayBoard(result);
+
+				displayArrows(board, result);
+				MessageBox::Show("The task is solved!", "Completed!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				result->messageBoxShow();
 				result->fileOutput(fileOutput);
 
 				delete this->board;
-				this->board = result;
+				this->board = new ChessBoard(result);
+				delete result;
 			}
 			fileOutput.close();
 		}
 		else
-			MessageBox::Show("Wrong placement!", "Error!");
+			MessageBox::Show("Wrong placement!", "Error!", MessageBoxButtons::OK, MessageBoxIcon::Error);
 
 	}
 
@@ -145,12 +138,12 @@ namespace CppCLRWinformsProject {
 				{
 					temp->insertQueen(i % (int)pow(10, j + 1) / (int)pow(10, j) - 1, j);
 				}
-				temp2 = BFS(temp);
+				temp2 = LDFS(temp); //choose method here
 				if (temp2 == NULL || temp2->queenCheck())
 					return false;
-				displayResult(temp2);
-				delete board;
-				board = new ChessBoard(temp2);
+				displayBoard(temp2);
+				//delete board;
+				//board = new ChessBoard(temp2);
 				delete temp, temp2;
 			}
 		}
@@ -161,7 +154,7 @@ namespace CppCLRWinformsProject {
 	{
 		std::vector<std::vector<int>> posFirst = first->getQueenPos();
 		std::vector<std::vector<int>> posSecond = second->getQueenPos();
-
+		
 		Point a, b;
 		Pen^ p = gcnew Pen(Color::Red);
 		p->Width = 6.0F;
@@ -180,8 +173,8 @@ namespace CppCLRWinformsProject {
 
 	System::Void Form1::pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
-		System::Drawing::Point pos = this->PointToClient(Cursor->Position);
-		this->board->insertQueen((pos.Y - 10) / 64, (pos.X - 10) / 64);
-		displayResult(board);
+		System::Drawing::Point pos = this->pictureBox1->PointToClient(Cursor->Position);
+		this->board->insertQueen((pos.Y) / 64, (pos.X) / 64);
+		displayBoard(board);
 	}
 }

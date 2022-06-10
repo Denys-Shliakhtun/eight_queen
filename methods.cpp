@@ -1,63 +1,25 @@
 #include "pch.h"
 #include "methods.h"
+//#include "Form1.h" //for output of every created board
 
 using namespace Local;
-/*
-bool stressTest()
-{
-	bool flag;
-	ChessBoard* temp, * temp2;
-	int k, l, d1, d2;
-	//const int arr[] = { 0, 1, 2, 3, 4, 5, 6, 7 };
-	for (int i = 11111111; i < 88888888; i++)
-	{
-		flag = true;
-		k = 10000000;
-		while (k > 1 && flag)
-		{
-			d1 = i % (k * 10) / k;
-			l = k / 10;
-			while (l > 0 && flag)
-			{
-				d2 = i % (l * 10) / l;
-				if (d1 == d2 || (d1 > 8 || d1 < 1) || (d2 > 8 || d2 < 1))
-				{
-					flag = false;
-				}
-				l /= 10;
-			}
-			k /= 10;
-		}
-		if (flag)
-		{
-			temp = new ChessBoard();
-			for (int j = 0; j < 8; j++)
-			{
-				temp->insertQueen(i % (int)pow(10, j + 1) / (int)pow(10, j) - 1, j);
-			}
-			temp2 = BFS(temp);
-			if (temp2 == NULL || temp2->getData()->queenCheck())
-				return false;
-			//displayResult(temp2);
-			delete temp, temp2;
-		}
-	}
-	return true;
-}
-*/
 
-ChessBoard* LDFS(ChessBoard* main)
+ChessBoardStat* LDFS(ChessBoard* main)
 {
+	//checking whether parameter is the solution of task
 	if (!main->queenCheck())
-		return new ChessBoard(main);
+		return new ChessBoardStat(main, 1, 1, 0);
+
+	//variables for LDFS algorithm
 	std::stack<TreeNode*> stack;
 	TreeNode* root = new TreeNode(new ChessBoard(main), 56);
 	stack.push(root);
-	TreeNode *temp, *temp2; 
-	int counter = 0;
+	TreeNode *temp, *temp2; 	
 	bool flag = true;
 	int lexNum;
 	std::vector<ChessBoard*> chessBoardArr;
+	
+	//LDFS algorithm
 	while (flag)
 	{
 		temp = stack.top();
@@ -68,35 +30,44 @@ ChessBoard* LDFS(ChessBoard* main)
 		stack.push(temp2);
 		if (!temp2->getNodeData()->queenCheck())
 			flag = false;
-		counter++;
-
-		if(stack.size() > 1000000)
-		{
-			root->deleteTree();
-			delete root;
-			return NULL;
-		}
+		for (int i = 0; i < chessBoardArr.size(); i++)
+			if (i != lexNum)
+				delete chessBoardArr[i];
+		//CppCLRWinformsProject::Form1::FormPointer->displayResult(chessBoardArr[lexNum]);
 	}
+
+	//result
 	ChessBoard* board = new ChessBoard(temp2->getNodeData());
-	
-	root->deleteTree();
+	int counter = root->deleteTree() + 1;
 	delete root;
-	return board;
+	ChessBoardStat* result = new ChessBoardStat(board, counter, counter, counter - 1);
+	delete board;
+	
+	return result;
 }
 
-ChessBoard* BFS(ChessBoard* main)
+ChessBoardStat* BFS(ChessBoard* main)
 {
+	//checking whether parameter is the solution of task
 	if (!main->queenCheck())
-		return new ChessBoard(main);
+		return new ChessBoardStat(main, 1, 1, 0);
+	
+	//variables for statistics
+	int counter = 1;
+	int maxCount = 1;
+
+	//variables for BFS algorithm
+	std::vector<int> depthCounter;
 	std::queue <TreeNode*> plan;
 	TreeNode* temp = new TreeNode(new ChessBoard(main), 56);
 	plan.push(temp);
-	int counter = 1;
 	bool flag = temp->getNodeData()->queenCheck();
 	TreeNode* temp2 = temp;
 	std::vector<ChessBoard*> chessBoardArr;
+
 	while (flag)
 	{
+		//BFS algorithm
 		temp = plan.front();
 		plan.pop();
 		chessBoardArr = temp->getNodeData()->boardBestArrGen();
@@ -107,59 +78,103 @@ ChessBoard* BFS(ChessBoard* main)
 			plan.push(temp2);
 			if (!temp2->getNodeData()->queenCheck())				
 				flag = false;			
-			counter++;			
+			counter++;
+			//CppCLRWinformsProject::Form1::FormPointer->displayResult(chessBoardArr[i]);
 		}
 
+		//counting max count of existing nodes at the same time
+		if (maxCount < plan.size() + 1)
+			maxCount = plan.size() + 1;
+
+		//counting the depth of the tree
+		depthCounter.push_back(chessBoardArr.size());
+
+		//deleting nodes that will not be used anymore
 		if (temp2 != temp)
 			delete temp;
 	}
+	
+	//deleting all the remaining tree nodes
 	while (plan.size() > 1)
 	{
 		temp = plan.front();
 		plan.pop();
 		delete temp;
 	}
+
+	//calculating the depth of the tree
+	int pos = 1;
+	int tempCount = depthCounter[0];
+	int tempSum = 0;
+	int depth = 1;
+	while (pos < depthCounter.size())
+	{
+		tempSum = 0;
+		for (int i = pos; i < pos + tempCount && pos + tempCount < depthCounter.size(); i++)
+		{
+			tempSum += depthCounter[i];
+		}
+		pos += tempCount;
+		tempCount = tempSum;
+		
+		depth++;
+	}
 	
-	return temp2->getNodeData();
+	ChessBoardStat* result = new ChessBoardStat(temp2->getNodeData(), counter, maxCount, depth);
+	delete temp2;
+	return result;
 }
 
-ChessBoard* IDS(ChessBoard* main, int max_depth)
+ChessBoardStat* IDS(ChessBoard* main, int max_depth)
 {
+	//checking whether parameter is the solution of task
 	if (!main->queenCheck())
-		return new ChessBoard(main);
+		return new ChessBoardStat(main, 1, 1, 0);
+
+	int lastCount = 0, prelastCount = 0, counter = 0; //variables for statistics
+
+	//IDS algorithm
 	TreeNode* head = new TreeNode(main, 56);
-	TreeNode* temp;
-	for (int i = 0; i <= max_depth; i++)
+	TreeNode* temp;	
+	ChessBoardStat* result = NULL;
+	for (int i = 0; i <= max_depth && result == NULL; i++)
 	{
 		temp = DLS(head, i);
 		if (temp != NULL)
 		{
-			
 			ChessBoard* board = new ChessBoard(temp->getNodeData());
-			head->deleteTree();
-			//delete head;
-			return board;
+
+			//statistics and deleting tree
+			lastCount = head->deleteTree() + 1;
+			counter += lastCount;
+			delete head;
+			result = new ChessBoardStat(board, counter, lastCount > prelastCount ? lastCount : prelastCount, i);
+			delete board;
 		}
 		else
-			head->deleteTree();
+		{
+			//deleting tree and counting statistics
+			prelastCount = head->deleteTree();
+			counter += prelastCount++;
+		}
 	}
 
-	return NULL;
+	return result;
 }
 
 TreeNode* DLS(TreeNode* src, int limit)
 {
+	//returns src if it is the solution of task
 	if (!src->getNodeData()->queenCheck())
 		return src;
 
-	// If reached the maximum depth, stop recursing.
+	//stopping recursion
 	if (limit <= 0)	
 		return NULL;
 	
-	// Recur for all the vertices adjacent to source vertex
+	//regular algorithm
 	TreeNode* temp;
-	TreeNode* temp2;
-	
+	TreeNode* temp2;	
 	std::vector<ChessBoard*> chessBoardArr = src->getNodeData()->boardBestArrGen();
 
 	for (int i = 0; i < chessBoardArr.size(); i++)
@@ -168,7 +183,9 @@ TreeNode* DLS(TreeNode* src, int limit)
 		temp2 = DLS(temp, limit - 1);
 		if (temp2 != NULL)
 			return temp2;
+		//CppCLRWinformsProject::Form1::FormPointer->displayResult(chessBoardArr[i]);
 	}	
 
+	//if the solution wasn't found
 	return NULL;
 }

@@ -29,13 +29,16 @@
     <ClInclude Include="Form1.h">
       <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="Tree.h">
+    <ClInclude Include="TreeNode.h">
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="ChessBoard.h">
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="methods.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChessBoardStat.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -55,10 +58,13 @@
     <ClCompile Include="methods.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="Tree.cpp">
+    <ClCompile Include="TreeNode.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="ChessBoard.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChessBoardStat.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
   </ItemGroup>

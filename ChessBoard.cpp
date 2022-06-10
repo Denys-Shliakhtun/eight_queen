@@ -142,11 +142,6 @@ bool ChessBoard::queenCheckDiagonal(int a, int b)
 	return false;
 }
 
-bool sortVec(std::vector<int> v1, std::vector<int> v2)
-{
-	return (v1[2] > v2[2]);
-}
-
 std::vector<std::vector<int>> ChessBoard::getQueenPos()
 {
 	std::vector<std::vector<int>> result;
@@ -158,7 +153,7 @@ std::vector<std::vector<int>> ChessBoard::getQueenPos()
 				result.push_back({ i, j, board[i][j] });
 		}
 	}
-	sort(result.begin(), result.end(), sortVec);
+	sort(result.begin(), result.end(), [](std::vector<int> v1, std::vector<int> v2) {return v1[2] < v2[2]; });
 	return result;
 }
 
@@ -203,12 +198,11 @@ std::vector<ChessBoard*> ChessBoard::boardBestArrGen()
 {
 	int queenHit = FIELD_SIZE;
 	ChessBoard** tempboard = new ChessBoard * [56];
-	bool flag = true;
 	int pos = 0;
 
-	for (int orientation = 1; orientation <= 2 && flag; orientation++)
-		for (int j = 0; j < ChessBoard::FIELD_SIZE - 1 && flag; j++)
-			for (int k = j + 1; k < ChessBoard::FIELD_SIZE && flag; k++)
+	for (int orientation = 1; orientation <= 2; orientation++)
+		for (int j = 0; j < ChessBoard::FIELD_SIZE - 1; j++)
+			for (int k = j + 1; k < ChessBoard::FIELD_SIZE; k++)
 			{
 				tempboard[pos] = new ChessBoard(this, j, k, orientation);
 				if (queenHit >= tempboard[pos]->getQueenHitNumber())
@@ -217,7 +211,7 @@ std::vector<ChessBoard*> ChessBoard::boardBestArrGen()
 			}
 
 	std::vector<ChessBoard*> result;
-	for (int i = 0; i < 56 && flag; i++)
+	for (int i = 0; i < 56; i++)
 	{
 		if (tempboard[i]->getQueenHitNumber() == queenHit)
 			result.push_back(tempboard[i]);

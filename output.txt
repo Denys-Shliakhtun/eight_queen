@@ -1,3 +1,1166 @@
+------------------------
+Thu Jun  9 11:26:06 2022
+
+Input:
+q * * * * * * * 
+* q * * * * * * 
+* * q * * * * * 
+* * * q * * * * 
+* * * * q * * * 
+* * * * * q * * 
+* * * * * * q * 
+* * * * * * * q 
+
+IDS method:
+* * q * * * * * 
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * q * 
+* * * * q * * * 
+q * * * * * * * 
+* * * * * * * q 
+* * * q * * * * 
+
+Statistics:
+The number of all created nodes: 40746
+Max number of nodes that existed at the same time: 30393
+The depth of the tree: 5
+
+
+------------------------
+Thu Jun  9 11:35:14 2022
+
+Input:
+q * * * * * * * 
+* q * * * * * * 
+* * q * * * * * 
+* * * q * * * * 
+* * * * q * * * 
+* * * * * q * * 
+* * * * * * q * 
+* * * * * * * q 
+
+LDFS method:
+* q * * * * * * 
+* * * * * q * * 
+q * * * * * * * 
+* * * * * * q * 
+* * * q * * * * 
+* * * * * * * q 
+* * q * * * * * 
+* * * * q * * * 
+
+Statistics:
+The number of all created nodes: 8
+Max number of nodes that existed at the same time: 8
+The depth of the tree: 7
+
+
+------------------------
+Thu Jun  9 11:35:32 2022
+
+Input:
+q * * * * * * * 
+* q * * * * * * 
+* * q * * * * * 
+* * * q * * * * 
+* * * * q * * * 
+* * * * * q * * 
+* * * * * * q * 
+* * * * * * * q 
+
+BFS method:
+* * q * * * * * 
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * q * 
+* * * * q * * * 
+q * * * * * * * 
+* * * * * * * q 
+* * * q * * * * 
+
+Statistics:
+The number of all created nodes: 32738
+Max number of nodes that existed at the same time: 25931
+The depth of the tree: 5
+
+
+------------------------
+Thu Jun  9 11:36:07 2022
+
+Input:
+q * * * * * * * 
+* q * * * * * * 
+* * q * * * * * 
+* * * q * * * * 
+* * * * q * * * 
+* * * * * q * * 
+* * * * * * q * 
+* * * * * * * q 
+
+IDS method:
+* * q * * * * * 
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * q * 
+* * * * q * * * 
+q * * * * * * * 
+* * * * * * * q 
+* * * q * * * * 
+
+Statistics:
+The number of all created nodes: 40746
+Max number of nodes that existed at the same time: 30393
+The depth of the tree: 5
+
+
+------------------------
+Thu Jun  9 11:37:53 2022
+
+Input:
+q * * * * * * * 
+* q * * * * * * 
+* * q * * * * * 
+* * * q * * * * 
+* * * * q * * * 
+* * * * * q * * 
+* * * * * * q * 
+* * * * * * * q 
+
+LDFS method:
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * q * 
+q * * * * * * * 
+* * * q * * * * 
+* * * * * * * q 
+* * * * q * * * 
+* * q * * * * * 
+
+Statistics:
+The number of all created nodes: 7
+Max number of nodes that existed at the same time: 7
+The depth of the tree: 6
+
+
+------------------------
+Thu Jun  9 11:38:18 2022
+
+Input:
+q * * * * * * * 
+* q * * * * * * 
+* * q * * * * * 
+* * * q * * * * 
+* * * * q * * * 
+* * * * * q * * 
+* * * * * * q * 
+* * * * * * * q 
+
+LDFS method:
+* * q * * * * * 
+* * * * q * * * 
+* * * * * * * q 
+* * * q * * * * 
+q * * * * * * * 
+* * * * * * q * 
+* q * * * * * * 
+* * * * * q * * 
+
+Statistics:
+The number of all created nodes: 9
+Max number of nodes that existed at the same time: 9
+The depth of the tree: 8
+
+
+------------------------
+Thu Jun  9 11:38:33 2022
+
+Input:
+q * * * * * * * 
+* q * * * * * * 
+* * q * * * * * 
+* * * q * * * * 
+* * * * q * * * 
+* * * * * q * * 
+* * * * * * q * 
+* * * * * * * q 
+
+LDFS method:
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * q * 
+q * * * * * * * 
+* * * q * * * * 
+* * * * * * * q 
+* * * * q * * * 
+* * q * * * * * 
+
+Statistics:
+The number of all created nodes: 7
+Max number of nodes that existed at the same time: 7
+The depth of the tree: 6
+
+
+------------------------
+Thu Jun  9 11:38:44 2022
+
+Input:
+q * * * * * * * 
+* q * * * * * * 
+* * q * * * * * 
+* * * q * * * * 
+* * * * q * * * 
+* * * * * q * * 
+* * * * * * q * 
+* * * * * * * q 
+
+LDFS method:
+* * q * * * * * 
+* * * * * * q * 
+* q * * * * * * 
+* * * * * * * q 
+* * * * q * * * 
+q * * * * * * * 
+* * * q * * * * 
+* * * * * q * * 
+
+Statistics:
+The number of all created nodes: 11
+Max number of nodes that existed at the same time: 11
+The depth of the tree: 10
+
+
+------------------------
+Thu Jun  9 11:39:04 2022
+
+Input:
+q * * * * * * * 
+* q * * * * * * 
+* * q * * * * * 
+* * * q * * * * 
+* * * * q * * * 
+* * * * * q * * 
+* * * * * * q * 
+* * * * * * * q 
+
+LDFS method:
+* q * * * * * * 
+* * * q * * * * 
+* * * * * q * * 
+* * * * * * * q 
+* * q * * * * * 
+q * * * * * * * 
+* * * * * * q * 
+* * * * q * * * 
+
+Statistics:
+The number of all created nodes: 13
+Max number of nodes that existed at the same time: 13
+The depth of the tree: 12
+
+
+------------------------
+Thu Jun  9 11:39:20 2022
+
+Input:
+q * * * * * * * 
+* q * * * * * * 
+* * q * * * * * 
+* * * q * * * * 
+* * * * q * * * 
+* * * * * q * * 
+* * * * * * q * 
+* * * * * * * q 
+
+LDFS method:
+* * * * * q * * 
+* * q * * * * * 
+q * * * * * * * 
+* * * * * * q * 
+* * * * q * * * 
+* * * * * * * q 
+* q * * * * * * 
+* * * q * * * * 
+
+Statistics:
+The number of all created nodes: 7
+Max number of nodes that existed at the same time: 7
+The depth of the tree: 6
+
+
+------------------------
+Thu Jun  9 11:39:28 2022
+
+Input:
+q * * * * * * * 
+* q * * * * * * 
+* * q * * * * * 
+* * * q * * * * 
+* * * * q * * * 
+* * * * * q * * 
+* * * * * * q * 
+* * * * * * * q 
+
+LDFS method:
+* * * * * q * * 
+* * * * * * * q 
+* q * * * * * * 
+* * * q * * * * 
+q * * * * * * * 
+* * * * * * q * 
+* * * * q * * * 
+* * q * * * * * 
+
+Statistics:
+The number of all created nodes: 12
+Max number of nodes that existed at the same time: 12
+The depth of the tree: 11
+
+
+------------------------
+Thu Jun  9 11:39:40 2022
+
+Input:
+q * * * * * * * 
+* q * * * * * * 
+* * q * * * * * 
+* * * q * * * * 
+* * * * q * * * 
+* * * * * q * * 
+* * * * * * q * 
+* * * * * * * q 
+
+LDFS method:
+* * * * * q * * 
+* * q * * * * * 
+* * * * * * q * 
+* q * * * * * * 
+* * * * * * * q 
+* * * * q * * * 
+q * * * * * * * 
+* * * q * * * * 
+
+Statistics:
+The number of all created nodes: 8
+Max number of nodes that existed at the same time: 8
+The depth of the tree: 7
+
+
+------------------------
+Thu Jun  9 11:43:05 2022
+
+Input:
+q * * * * * * * 
+* q * * * * * * 
+* * q * * * * * 
+* * * q * * * * 
+* * * * * * * q 
+* * * * * * q * 
+* * * * * q * * 
+* * * * q * * * 
+
+LDFS method:
+* * * q * * * * 
+* * * * * q * * 
+* * * * * * * q 
+* q * * * * * * 
+* * * * * * q * 
+q * * * * * * * 
+* * q * * * * * 
+* * * * q * * * 
+
+Statistics:
+The number of all created nodes: 7
+Max number of nodes that existed at the same time: 7
+The depth of the tree: 6
+
+
+------------------------
+Thu Jun  9 11:43:38 2022
+
+Input:
+q * * * * * * * 
+* q * * * * * * 
+* * q * * * * * 
+* * * q * * * * 
+* * * * * * * q 
+* * * * * * q * 
+* * * * * q * * 
+* * * * q * * * 
+
+LDFS method:
+* q * * * * * * 
+* * * * * q * * 
+q * * * * * * * 
+* * * * * * q * 
+* * * q * * * * 
+* * * * * * * q 
+* * q * * * * * 
+* * * * q * * * 
+
+Statistics:
+The number of all created nodes: 6
+Max number of nodes that existed at the same time: 6
+The depth of the tree: 5
+
+
+------------------------
+Thu Jun  9 11:43:58 2022
+
+Input:
+q * * * * * * * 
+* q * * * * * * 
+* * q * * * * * 
+* * * q * * * * 
+* * * * * * * q 
+* * * * * * q * 
+* * * * * q * * 
+* * * * q * * * 
+
+LDFS method:
+* * q * * * * * 
+* * * * q * * * 
+* * * * * * * q 
+* * * q * * * * 
+q * * * * * * * 
+* * * * * * q * 
+* q * * * * * * 
+* * * * * q * * 
+
+Statistics:
+The number of all created nodes: 5
+Max number of nodes that existed at the same time: 5
+The depth of the tree: 4
+
+
+------------------------
+Thu Jun  9 11:44:24 2022
+
+Input:
+q * * * * * * * 
+* q * * * * * * 
+* * q * * * * * 
+* * * q * * * * 
+* * * * * * * q 
+* * * * * * q * 
+* * * * * q * * 
+* * * * q * * * 
+
+LDFS method:
+* * * * q * * * 
+q * * * * * * * 
+* * * * * * * q 
+* * * * * q * * 
+* * q * * * * * 
+* * * * * * q * 
+* q * * * * * * 
+* * * q * * * * 
+
+Statistics:
+The number of all created nodes: 6
+Max number of nodes that existed at the same time: 6
+The depth of the tree: 5
+
+
+------------------------
+Thu Jun  9 11:44:36 2022
+
+Input:
+q * * * * * * * 
+* q * * * * * * 
+* * q * * * * * 
+* * * q * * * * 
+* * * * * * * q 
+* * * * * * q * 
+* * * * * q * * 
+* * * * q * * * 
+
+LDFS method:
+* * * q * * * * 
+q * * * * * * * 
+* * * * q * * * 
+* * * * * * * q 
+* q * * * * * * 
+* * * * * * q * 
+* * q * * * * * 
+* * * * * q * * 
+
+Statistics:
+The number of all created nodes: 14
+Max number of nodes that existed at the same time: 14
+The depth of the tree: 13
+
+
+------------------------
+Thu Jun  9 11:44:54 2022
+
+Input:
+q * * * * * * * 
+* q * * * * * * 
+* * q * * * * * 
+* * * q * * * * 
+* * * * * * * q 
+* * * * * * q * 
+* * * * * q * * 
+* * * * q * * * 
+
+LDFS method:
+* * * * * q * * 
+* * * q * * * * 
+* * * * * * q * 
+q * * * * * * * 
+* * * * * * * q 
+* q * * * * * * 
+* * * * q * * * 
+* * q * * * * * 
+
+Statistics:
+The number of all created nodes: 7
+Max number of nodes that existed at the same time: 7
+The depth of the tree: 6
+
+
+------------------------
+Thu Jun  9 11:48:16 2022
+
+Input:
+q * * * * * * * 
+* q * * * * * * 
+* * q * * * * * 
+* * * q * * * * 
+* * * * * * * q 
+* * * * * * q * 
+* * * * * q * * 
+* * * * q * * * 
+
+BFS method:
+* * * * q * * * 
+* * * * * * q * 
+q * * * * * * * 
+* * * q * * * * 
+* q * * * * * * 
+* * * * * * * q 
+* * * * * q * * 
+* * q * * * * * 
+
+Statistics:
+The number of all created nodes: 1118
+Max number of nodes that existed at the same time: 891
+The depth of the tree: 4
+
+
+------------------------
+Thu Jun  9 11:48:40 2022
+
+Input:
+q * * * * * * * 
+* q * * * * * * 
+* * q * * * * * 
+* * * q * * * * 
+* * * * * * * q 
+* * * * * * q * 
+* * * * * q * * 
+* * * * q * * * 
+
+IDS method:
+* * * * q * * * 
+* * * * * * q * 
+q * * * * * * * 
+* * * q * * * * 
+* q * * * * * * 
+* * * * * * * q 
+* * * * * q * * 
+* * q * * * * * 
+
+Statistics:
+The number of all created nodes: 1380
+Max number of nodes that existed at the same time: 1105
+The depth of the tree: 4
+
+
+------------------------
+Thu Jun  9 11:50:19 2022
+
+Input:
+q * * * * * * * 
+* * * q * * * * 
+* * * * * * q * 
+* q * * * * * * 
+* * * * q * * * 
+* * * * * * * q 
+* * q * * * * * 
+* * * * * q * * 
+
+BFS method:
+* * * q * * * * 
+* q * * * * * * 
+* * * * * * q * 
+* * * * q * * * 
+q * * * * * * * 
+* * * * * * * q 
+* * * * * q * * 
+* * q * * * * * 
+
+Statistics:
+The number of all created nodes: 354
+Max number of nodes that existed at the same time: 305
+The depth of the tree: 4
+
+
+------------------------
+Thu Jun  9 11:51:02 2022
+
+Input:
+q * * * * * * * 
+* * * q * * * * 
+* * * * * * q * 
+* q * * * * * * 
+* * * * q * * * 
+* * * * * * * q 
+* * q * * * * * 
+* * * * * q * * 
+
+IDS method:
+* * * q * * * * 
+* q * * * * * * 
+* * * * * * q * 
+* * * * q * * * 
+q * * * * * * * 
+* * * * * * * q 
+* * * * * q * * 
+* * q * * * * * 
+
+Statistics:
+The number of all created nodes: 413
+Max number of nodes that existed at the same time: 353
+The depth of the tree: 4
+
+
+------------------------
+Thu Jun  9 11:55:06 2022
+
+Input:
+q * * * * * * * 
+* * * q * * * * 
+* * * * * * q * 
+* q * * * * * * 
+* * * * q * * * 
+* * * * * * * q 
+* * q * * * * * 
+* * * * * q * * 
+
+LDFS method:
+* q * * * * * * 
+* * * * q * * * 
+* * * * * * q * 
+q * * * * * * * 
+* * q * * * * * 
+* * * * * * * q 
+* * * * * q * * 
+* * * q * * * * 
+
+Statistics:
+The number of all created nodes: 5
+Max number of nodes that existed at the same time: 5
+The depth of the tree: 4
+
+
+------------------------
+Thu Jun  9 11:55:34 2022
+
+Input:
+q * * * * * * * 
+* * * q * * * * 
+* * * * * * q * 
+* q * * * * * * 
+* * * * q * * * 
+* * * * * * * q 
+* * q * * * * * 
+* * * * * q * * 
+
+LDFS method:
+* * q * * * * * 
+* * * * q * * * 
+* * * * * * * q 
+* * * q * * * * 
+q * * * * * * * 
+* * * * * * q * 
+* q * * * * * * 
+* * * * * q * * 
+
+Statistics:
+The number of all created nodes: 6
+Max number of nodes that existed at the same time: 6
+The depth of the tree: 5
+
+
+------------------------
+Thu Jun  9 11:56:16 2022
+
+Input:
+q * * * * * * * 
+* * * q * * * * 
+* * * * * * q * 
+* q * * * * * * 
+* * * * q * * * 
+* * * * * * * q 
+* * q * * * * * 
+* * * * * q * * 
+
+LDFS method:
+* * * q * * * * 
+* q * * * * * * 
+* * * * * * q * 
+* * q * * * * * 
+* * * * * q * * 
+* * * * * * * q 
+q * * * * * * * 
+* * * * q * * * 
+
+Statistics:
+The number of all created nodes: 5
+Max number of nodes that existed at the same time: 5
+The depth of the tree: 4
+
+
+------------------------
+Thu Jun  9 11:56:29 2022
+
+Input:
+q * * * * * * * 
+* * * q * * * * 
+* * * * * * q * 
+* q * * * * * * 
+* * * * q * * * 
+* * * * * * * q 
+* * q * * * * * 
+* * * * * q * * 
+
+LDFS method:
+* * * q * * * * 
+* * * * * * * q 
+q * * * * * * * 
+* * q * * * * * 
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * q * 
+* * * * q * * * 
+
+Statistics:
+The number of all created nodes: 7
+Max number of nodes that existed at the same time: 7
+The depth of the tree: 6
+
+
+------------------------
+Thu Jun  9 11:56:57 2022
+
+Input:
+q * * * * * * * 
+* * * q * * * * 
+* * * * * * q * 
+* q * * * * * * 
+* * * * q * * * 
+* * * * * * * q 
+* * q * * * * * 
+* * * * * q * * 
+
+LDFS method:
+* * * * * * q * 
+* q * * * * * * 
+* * * q * * * * 
+q * * * * * * * 
+* * * * * * * q 
+* * * * q * * * 
+* * q * * * * * 
+* * * * * q * * 
+
+Statistics:
+The number of all created nodes: 5
+Max number of nodes that existed at the same time: 5
+The depth of the tree: 4
+
+
+------------------------
+Thu Jun  9 11:57:14 2022
+
+Input:
+q * * * * * * * 
+* * * q * * * * 
+* * * * * * q * 
+* q * * * * * * 
+* * * * q * * * 
+* * * * * * * q 
+* * q * * * * * 
+* * * * * q * * 
+
+LDFS method:
+* * q * * * * * 
+* * * * * * * q 
+* * * q * * * * 
+* * * * * * q * 
+q * * * * * * * 
+* * * * * q * * 
+* q * * * * * * 
+* * * * q * * * 
+
+Statistics:
+The number of all created nodes: 16
+Max number of nodes that existed at the same time: 16
+The depth of the tree: 15
+
+
+------------------------
+Thu Jun  9 11:57:41 2022
+
+Input:
+q * * * * * * * 
+* q * * * * * * 
+* * q * * * * * 
+* * * q * * * * 
+* * * * q * * * 
+* * * * * q * * 
+* * * * * * q * 
+* * * * * * * q 
+
+LDFS method:
+* * * * * * q * 
+* * * * q * * * 
+* * q * * * * * 
+q * * * * * * * 
+* * * * * q * * 
+* * * * * * * q 
+* q * * * * * * 
+* * * q * * * * 
+
+Statistics:
+The number of all created nodes: 13
+Max number of nodes that existed at the same time: 13
+The depth of the tree: 12
+
+
+------------------------
+Thu Jun  9 11:57:51 2022
+
+Input:
+q * * * * * * * 
+* q * * * * * * 
+* * q * * * * * 
+* * * q * * * * 
+* * * * q * * * 
+* * * * * q * * 
+* * * * * * q * 
+* * * * * * * q 
+
+LDFS method:
+* * * * * q * * 
+* * q * * * * * 
+* * * * q * * * 
+* * * * * * * q 
+q * * * * * * * 
+* * * q * * * * 
+* q * * * * * * 
+* * * * * * q * 
+
+Statistics:
+The number of all created nodes: 8
+Max number of nodes that existed at the same time: 8
+The depth of the tree: 7
+
+
+------------------------
+Thu Jun  9 11:58:02 2022
+
+Input:
+q * * * * * * * 
+* q * * * * * * 
+* * q * * * * * 
+* * * q * * * * 
+* * * * q * * * 
+* * * * * q * * 
+* * * * * * q * 
+* * * * * * * q 
+
+LDFS method:
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * q * 
+q * * * * * * * 
+* * * q * * * * 
+* * * * * * * q 
+* * * * q * * * 
+* * q * * * * * 
+
+Statistics:
+The number of all created nodes: 11
+Max number of nodes that existed at the same time: 11
+The depth of the tree: 10
+
+
+------------------------
+Thu Jun  9 11:58:11 2022
+
+Input:
+q * * * * * * * 
+* q * * * * * * 
+* * q * * * * * 
+* * * q * * * * 
+* * * * q * * * 
+* * * * * q * * 
+* * * * * * q * 
+* * * * * * * q 
+
+LDFS method:
+* * q * * * * * 
+* * * * q * * * 
+* * * * * * * q 
+* * * q * * * * 
+q * * * * * * * 
+* * * * * * q * 
+* q * * * * * * 
+* * * * * q * * 
+
+Statistics:
+The number of all created nodes: 7
+Max number of nodes that existed at the same time: 7
+The depth of the tree: 6
+
+
+------------------------
+Thu Jun  9 12:31:39 2022
+
+Input:
+q * * * * * * * 
+* q * * * * * * 
+* * q * * * * * 
+* * * q * * * * 
+* * * * q * * * 
+* * * * * q * * 
+* * * * * * q * 
+* * * * * * * q 
+
+LDFS method:
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * q * 
+q * * * * * * * 
+* * * q * * * * 
+* * * * * * * q 
+* * * * q * * * 
+* * q * * * * * 
+
+Statistics:
+The number of all created nodes: 7
+Max number of nodes that existed at the same time: 7
+The depth of the tree: 6
+
+
+------------------------
+Thu Jun  9 12:32:04 2022
+
+Input:
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * * q 
+q * * * * * * * 
+* * * * q * * * 
+* * * * * * q * 
+* * * q * * * * 
+* * q * * * * * 
+
+BFS method:
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * q * 
+q * * * * * * * 
+* * * q * * * * 
+* * * * * * * q 
+* * * * q * * * 
+* * q * * * * * 
+
+Statistics:
+The number of all created nodes: 4
+Max number of nodes that existed at the same time: 3
+The depth of the tree: 2
+
+
+------------------------
+Thu Jun  9 12:32:28 2022
+
+Input:
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * * q 
+q * * * * * * * 
+* * * * q * * * 
+* * * * * * q * 
+* * * q * * * * 
+* * q * * * * * 
+
+IDS method:
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * q * 
+q * * * * * * * 
+* * * q * * * * 
+* * * * * * * q 
+* * * * q * * * 
+* * q * * * * * 
+
+Statistics:
+The number of all created nodes: 5
+Max number of nodes that existed at the same time: 3
+The depth of the tree: 2
+
+
+------------------------
+Thu Jun  9 12:32:54 2022
+
+Input:
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * * q 
+q * * * * * * * 
+* * * * q * * * 
+* * * * * * q * 
+* * * q * * * * 
+* * q * * * * * 
+
+IDS method:
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * q * 
+q * * * * * * * 
+* * * q * * * * 
+* * * * * * * q 
+* * * * q * * * 
+* * q * * * * * 
+
+Statistics:
+The number of all created nodes: 5
+Max number of nodes that existed at the same time: 3
+The depth of the tree: 2
+
+
+------------------------
+Thu Jun  9 12:33:03 2022
+
+Input:
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * * q 
+q * * * * * * * 
+* * * * q * * * 
+* * * * * * q * 
+* * * q * * * * 
+* * q * * * * * 
+
+LDFS method:
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * q * 
+q * * * * * * * 
+* * * q * * * * 
+* * * * * * * q 
+* * * * q * * * 
+* * q * * * * * 
+
+Statistics:
+The number of all created nodes: 3
+Max number of nodes that existed at the same time: 3
+The depth of the tree: 2
+
+
+------------------------
+Thu Jun  9 12:33:16 2022
+
+Input:
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * * q 
+q * * * * * * * 
+* * * * q * * * 
+* * * * * * q * 
+* * * q * * * * 
+* * q * * * * * 
+
+LDFS method:
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * q * 
+q * * * * * * * 
+* * * q * * * * 
+* * * * * * * q 
+* * * * q * * * 
+* * q * * * * * 
+
+Statistics:
+The number of all created nodes: 3
+Max number of nodes that existed at the same time: 3
+The depth of the tree: 2
+
+
+------------------------
+Thu Jun  9 12:33:21 2022
+
+Input:
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * * q 
+q * * * * * * * 
+* * * * q * * * 
+* * * * * * q * 
+* * * q * * * * 
+* * q * * * * * 
+
+LDFS method:
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * q * 
+q * * * * * * * 
+* * * q * * * * 
+* * * * * * * q 
+* * * * q * * * 
+* * q * * * * * 
+
+Statistics:
+The number of all created nodes: 3
+Max number of nodes that existed at the same time: 3
+The depth of the tree: 2
+
+
+------------------------
+Thu Jun  9 12:33:27 2022
+
+Input:
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * * q 
+q * * * * * * * 
+* * * * q * * * 
+* * * * * * q * 
+* * * q * * * * 
+* * q * * * * * 
+
+LDFS method:
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * q * 
+q * * * * * * * 
+* * * q * * * * 
+* * * * * * * q 
+* * * * q * * * 
+* * q * * * * * 
+
+Statistics:
+The number of all created nodes: 3
+Max number of nodes that existed at the same time: 3
+The depth of the tree: 2
+
+
+------------------------
+Thu Jun  9 12:33:41 2022
+
 Input:
 * * * * * * * q 
 * * * * * * q * 
@@ -9,11 +1172,163 @@ Input:
 q * * * * * * * 
 
 LDFS method:
-* * * * q * * * 
-* * * * * * q * 
-* q * * * * * * 
 * * * * * q * * 
-* * q * * * * * 
+* q * * * * * * 
+* * * * * * q * 
 q * * * * * * * 
+* * q * * * * * 
+* * * * q * * * 
 * * * * * * * q 
 * * * q * * * * 
+
+Statistics:
+The number of all created nodes: 11
+Max number of nodes that existed at the same time: 11
+The depth of the tree: 10
+
+
+------------------------
+Thu Jun  9 12:38:11 2022
+
+Input:
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * * q 
+q * * * * * * * 
+* * q * * * * * 
+* * * * q * * * 
+* * * * * * q * 
+* * * q * * * * 
+
+LDFS method:
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * q * 
+q * * * * * * * 
+* * q * * * * * 
+* * * * q * * * 
+* * * * * * * q 
+* * * q * * * * 
+
+Statistics:
+The number of all created nodes: 2
+Max number of nodes that existed at the same time: 2
+The depth of the tree: 1
+
+
+------------------------
+Thu Jun  9 12:38:22 2022
+
+Input:
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * * q 
+q * * * * * * * 
+* * q * * * * * 
+* * * * q * * * 
+* * * * * * q * 
+* * * q * * * * 
+
+BFS method:
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * q * 
+q * * * * * * * 
+* * q * * * * * 
+* * * * q * * * 
+* * * * * * * q 
+* * * q * * * * 
+
+Statistics:
+The number of all created nodes: 2
+Max number of nodes that existed at the same time: 2
+The depth of the tree: 1
+
+
+------------------------
+Thu Jun  9 12:38:31 2022
+
+Input:
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * * q 
+q * * * * * * * 
+* * q * * * * * 
+* * * * q * * * 
+* * * * * * q * 
+* * * q * * * * 
+
+IDS method:
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * q * 
+q * * * * * * * 
+* * q * * * * * 
+* * * * q * * * 
+* * * * * * * q 
+* * * q * * * * 
+
+Statistics:
+The number of all created nodes: 2
+Max number of nodes that existed at the same time: 2
+The depth of the tree: 1
+
+
+------------------------
+Thu Jun  9 12:38:39 2022
+
+Input:
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * * q 
+q * * * * * * * 
+* * q * * * * * 
+* * * * q * * * 
+* * * * * * q * 
+* * * q * * * * 
+
+LDFS method:
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * q * 
+q * * * * * * * 
+* * q * * * * * 
+* * * * q * * * 
+* * * * * * * q 
+* * * q * * * * 
+
+Statistics:
+The number of all created nodes: 2
+Max number of nodes that existed at the same time: 2
+The depth of the tree: 1
+
+
+------------------------
+Thu Jun  9 12:38:43 2022
+
+Input:
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * * q 
+q * * * * * * * 
+* * q * * * * * 
+* * * * q * * * 
+* * * * * * q * 
+* * * q * * * * 
+
+LDFS method:
+* * * * * q * * 
+* q * * * * * * 
+* * * * * * q * 
+q * * * * * * * 
+* * q * * * * * 
+* * * * q * * * 
+* * * * * * * q 
+* * * q * * * * 
+
+Statistics:
+The number of all created nodes: 2
+Max number of nodes that existed at the same time: 2
+The depth of the tree: 1
+
+

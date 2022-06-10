@@ -23,8 +23,9 @@ namespace CppCLRWinformsProject {
 			boardImage = Image::FromFile("board.jpg");
 			this->pictureBox1->Image = boardImage;
 			this->pictureBox1->SizeMode = PictureBoxSizeMode::StretchImage;
-			this->board = new ChessBoard();			
+			this->board = new ChessBoard();
 			graphics = pictureBox1->CreateGraphics();
+			FormPointer = this;
 			
 			//
 			//TODO: Konstruktorcode hier hinzufügen.
@@ -59,6 +60,9 @@ namespace CppCLRWinformsProject {
 	private: Image^ boardImage;
 
 
+	public:  static Form1^ FormPointer;
+
+
 
 
 		/// <summary>
@@ -73,7 +77,6 @@ namespace CppCLRWinformsProject {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			//System::Windows::Forms::GroupBox^ groupBox1;
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
@@ -81,7 +84,6 @@ namespace CppCLRWinformsProject {
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
-			
 			// 
 			// button1
 			// 
@@ -127,7 +129,7 @@ namespace CppCLRWinformsProject {
 			this->pictureBox1->BackColor = System::Drawing::Color::Transparent;
 			this->pictureBox1->Location = System::Drawing::Point(10, 10);
 			this->pictureBox1->Margin = System::Windows::Forms::Padding(0);
-			this->pictureBox1->Name = L"PictureBox1";
+			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(512, 512);
 			this->pictureBox1->TabIndex = 2;
 			this->pictureBox1->TabStop = false;
@@ -137,7 +139,7 @@ namespace CppCLRWinformsProject {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(740, 535);
+			this->ClientSize = System::Drawing::Size(746, 534);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->pictureBox1);
@@ -160,9 +162,7 @@ namespace CppCLRWinformsProject {
 
 	private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e);
 
-	public:  System::Void displayResult(ChessBoard* board);
-
-	private: System::Void displayResult(ChessBoard* board, ChessBoard* prev);
+	public:  static System::Void displayBoard(ChessBoard* board);
 
 	private: System::Void displayArrows(ChessBoard* first, ChessBoard* second);
 

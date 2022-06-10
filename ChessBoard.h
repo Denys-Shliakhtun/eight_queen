@@ -4,14 +4,16 @@
 
 class ChessBoard
 {
-	// 0 - empty
-	//>0 - queen
-
-	unsigned char** board;
 	void pointerDecl();
 	void setBoard(ChessBoard* prev);
 	void setEmptyBoard(); 
+protected:
+	// 0 - empty
+	//>0 - queen
+	unsigned char** board;
 public:	
+	virtual void messageBoxShow() {};
+	
 	static const int FIELD_SIZE;
 	
 	ChessBoard();
@@ -32,7 +34,7 @@ public:
 	//true if queen hits another queen
 	bool queenCheckDiagonal(int a, int b);
 
-	std::vector<std::vector<int>> ChessBoard::getQueenPos();	
+	std::vector<std::vector<int>> getQueenPos();	
 
 	void insertQueen(int x, int y);
 
@@ -42,7 +44,7 @@ public:
 
 	std::vector<ChessBoard*> boardBestArrGen();
 
-	void fileOutput(std::ofstream&);
+	virtual void fileOutput(std::ofstream&);
 
 	~ChessBoard();
 };

@@ -1,5 +1,7 @@
 ﻿  Form1.cpp
-  main.cpp
-  Generating Code...
+e:\university\II semester\kursach\project\eight_queens\Form1.cpp(1,1): warning C4005: '__CLR_VER': macro redefinition
+E:\university\II semester\kursach\project\eight_queens\pch.cpp : message : see previous definition of '__CLR_VER'
+e:\university\II semester\kursach\project\eight_queens\Form1.cpp(1,1): warning C4651: '/D__CLR_VER=40804510' specified for precompiled header but not for current compile
+e:\university\II semester\kursach\project\eight_queens\Form1.cpp(55,50): warning C4996: 'ctime': This function or variable may be unsafe. Consider using ctime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   AssemblyInfo.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   eight_queens.vcxproj -> E:\university\II semester\kursach\project\eight_queens\x64\Debug\eight_queens.exe

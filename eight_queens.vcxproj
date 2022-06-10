@@ -143,17 +143,19 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChessBoard.h" />
+    <ClInclude Include="ChessBoardStat.h" />
     <ClInclude Include="Form1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="methods.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="Tree.h" />
+    <ClInclude Include="TreeNode.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="ChessBoard.cpp" />
+    <ClCompile Include="ChessBoardStat.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Form1.cpp" />
     <ClCompile Include="pch.cpp">
@@ -163,7 +165,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="methods.cpp" />
-    <ClCompile Include="Tree.cpp" />
+    <ClCompile Include="TreeNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="app.ico">
