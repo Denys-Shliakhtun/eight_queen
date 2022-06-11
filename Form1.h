@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "methods.h"
 
 namespace CppCLRWinformsProject {
@@ -10,12 +10,11 @@ namespace CppCLRWinformsProject {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	/// <summary>
-	/// Zusammenfassung f�r Form1
-	/// </summary>
+	
 	public ref class Form1 : public System::Windows::Forms::Form
 	{
-	public:
+	public:		
+		// конструктор форми
 		Form1(void)
 		{
 			InitializeComponent();
@@ -25,55 +24,28 @@ namespace CppCLRWinformsProject {
 			this->pictureBox1->SizeMode = PictureBoxSizeMode::StretchImage;
 			this->board = new ChessBoard();
 			graphics = pictureBox1->CreateGraphics();
-			FormPointer = this;
-			
-			//
-			//TODO: Konstruktorcode hier hinzuf�gen.
-			//
+			FormPointer = this;			
 		}
-
-	protected:
-		/// <summary>
-		/// Verwendete Ressourcen bereinigen.
-		/// </summary>
-		/// 
 		
-		//~Form1()
-		//{
-		//	/*
-		//	if (components)
-		//	{
-		//		delete components;
-		//	}
-		//	*/
-		//}
-		
+	// елементи форми
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::ComboBox^ comboBox1;	
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
-	private: ChessBoard* board;
-	private: PictureBox^ picturebox;
-	private: Graphics^ graphics;
-	private: Image^ queenImage;
-	private: Image^ boardImage;
-
-
+	private: System::Windows::Forms::PictureBox^ picturebox;
+	private: System::Drawing::Graphics^ graphics;
+	private: System::Drawing::Image^ queenImage;
+	private: System::Drawing::Image^ boardImage;
+	// покажчик для можливості виведення проміжних значень шахової дошки
 	public:  static Form1^ FormPointer;
-
-
-
-
-		/// <summary>
-		/// Erforderliche Designervariable.
-		/// </summary>
-	//private: System::ComponentModel::Container ^components;
+	// шахова дошка
+	private: ChessBoard* board;	
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode f�r die Designerunterst�tzung.
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor ge�ndert werden.
+		/// ініціалізація компонентів форми
+		/// автоматично згенерований код
 		/// </summary>
 		void InitializeComponent(void)
 		{
@@ -158,18 +130,25 @@ namespace CppCLRWinformsProject {
 		}
 #pragma endregion
 	
+	// подія натискання на кнопку, що запускає виконання одного з методів
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e);
 
+	// подія натискання на дошку, що відповідає за появу шахових фігур на полі
 	private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e);
 
+	// відображення шахової дошки в графічному інтерфейсі
 	public:  static System::Void displayBoard(ChessBoard* board);
 
+	// відображення напрямку переміщення шахових фігур з початкової розстановки в кінцеву
 	private: System::Void displayArrows(ChessBoard* first, ChessBoard* second);
 
+	// відображення ферзя на заданих координатах
 	private: System::Void createPictureQueen(int x, int y, int num);
 
+	// подія натискання на ферзя, що слугує для його видалення
 	private: System::Void deletePictureQueen(System::Object^ sender, System::EventArgs^ e);	
 	
+	// стрес-тест для методів та функції виведення дошки
 	private:  bool stressTest();
 	};
 }

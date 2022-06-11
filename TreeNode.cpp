@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "TreeNode.h"
-#include <queue>
 using namespace Local;
 
 TreeNode::TreeNode(ChessBoard* param, int num)

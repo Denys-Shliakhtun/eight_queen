@@ -20,12 +20,6 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Resource.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="pch.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
     <ClInclude Include="Form1.h">
       <Filter>Header files</Filter>
     </ClInclude>
@@ -41,15 +35,15 @@
     <ClInclude Include="ChessBoardStat.h">
       <Filter>Header files</Filter>
     </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="AssemblyInfo.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="pch.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="Form1.cpp">
@@ -65,6 +59,9 @@
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="ChessBoardStat.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,25 +1,25 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "methods.h"
-//#include "Form1.h" //for output of every created board
+//#include "Form1.h" //для виведення кожної проміжкової дошки
 
 using namespace Local;
 
 ChessBoardStat* LDFS(ChessBoard* main)
 {
-	//checking whether parameter is the solution of task
+	// перевірка, чи параметр є розв'язком задачі
 	if (!main->queenCheck())
 		return new ChessBoardStat(main, 1, 1, 0);
 
-	//variables for LDFS algorithm
+	// змінні для LDFS алгоритму
 	std::stack<TreeNode*> stack;
-	TreeNode* root = new TreeNode(new ChessBoard(main), 56);
+	TreeNode* root = new TreeNode(new ChessBoard(main), pow(ChessBoard::FIELD_SIZE, 2) - ChessBoard::FIELD_SIZE);
 	stack.push(root);
 	TreeNode *temp, *temp2; 	
 	bool flag = true;
 	int lexNum;
 	std::vector<ChessBoard*> chessBoardArr;
 	
-	//LDFS algorithm
+	// LDFS алгоритм
 	while (flag)
 	{
 		temp = stack.top();
@@ -36,7 +36,7 @@ ChessBoardStat* LDFS(ChessBoard* main)
 		//CppCLRWinformsProject::Form1::FormPointer->displayResult(chessBoardArr[lexNum]);
 	}
 
-	//result
+	// результат
 	ChessBoard* board = new ChessBoard(temp2->getNodeData());
 	int counter = root->deleteTree() + 1;
 	delete root;
@@ -48,18 +48,18 @@ ChessBoardStat* LDFS(ChessBoard* main)
 
 ChessBoardStat* BFS(ChessBoard* main)
 {
-	//checking whether parameter is the solution of task
+	// перевірка, чи параметр є розв'язком задачі
 	if (!main->queenCheck())
 		return new ChessBoardStat(main, 1, 1, 0);
 	
-	//variables for statistics
+	//v змінні для статистики
 	int counter = 1;
 	int maxCount = 1;
 
-	//variables for BFS algorithm
+	// змінні для BFS алгоритму
 	std::vector<int> depthCounter;
 	std::queue <TreeNode*> plan;
-	TreeNode* temp = new TreeNode(new ChessBoard(main), 56);
+	TreeNode* temp = new TreeNode(new ChessBoard(main), pow(ChessBoard::FIELD_SIZE, 2) - ChessBoard::FIELD_SIZE);
 	plan.push(temp);
 	bool flag = temp->getNodeData()->queenCheck();
 	TreeNode* temp2 = temp;
@@ -67,7 +67,7 @@ ChessBoardStat* BFS(ChessBoard* main)
 
 	while (flag)
 	{
-		//BFS algorithm
+		//BFS алгоритм
 		temp = plan.front();
 		plan.pop();
 		chessBoardArr = temp->getNodeData()->boardBestArrGen();
@@ -82,19 +82,19 @@ ChessBoardStat* BFS(ChessBoard* main)
 			//CppCLRWinformsProject::Form1::FormPointer->displayResult(chessBoardArr[i]);
 		}
 
-		//counting max count of existing nodes at the same time
+		// визначення найбільшої кількості вершин, що існували в один момент
 		if (maxCount < plan.size() + 1)
 			maxCount = plan.size() + 1;
 
-		//counting the depth of the tree
+		// вектор для подальших обрахунків висоти дерева
 		depthCounter.push_back(chessBoardArr.size());
 
-		//deleting nodes that will not be used anymore
+		// видалення непотрібних вершин
 		if (temp2 != temp)
 			delete temp;
 	}
 	
-	//deleting all the remaining tree nodes
+	// видалення всіх вершин дерева, що залишилися
 	while (plan.size() > 1)
 	{
 		temp = plan.front();
@@ -102,7 +102,7 @@ ChessBoardStat* BFS(ChessBoard* main)
 		delete temp;
 	}
 
-	//calculating the depth of the tree
+	// обчислення висоти дерева
 	int pos = 1;
 	int tempCount = depthCounter[0];
 	int tempSum = 0;
@@ -110,16 +110,14 @@ ChessBoardStat* BFS(ChessBoard* main)
 	while (pos < depthCounter.size())
 	{
 		tempSum = 0;
-		for (int i = pos; i < pos + tempCount && pos + tempCount < depthCounter.size(); i++)
-		{
-			tempSum += depthCounter[i];
-		}
+		for (int i = pos; i < pos + tempCount && pos + tempCount < depthCounter.size(); i++)		
+			tempSum += depthCounter[i];		
 		pos += tempCount;
-		tempCount = tempSum;
-		
+		tempCount = tempSum;		
 		depth++;
 	}
 	
+	// результат
 	ChessBoardStat* result = new ChessBoardStat(temp2->getNodeData(), counter, maxCount, depth);
 	delete temp2;
 	return result;
@@ -127,14 +125,14 @@ ChessBoardStat* BFS(ChessBoard* main)
 
 ChessBoardStat* IDS(ChessBoard* main, int max_depth)
 {
-	//checking whether parameter is the solution of task
+	// перевірка, чи параметр є розв'язком задачі
 	if (!main->queenCheck())
 		return new ChessBoardStat(main, 1, 1, 0);
 
-	int lastCount = 0, prelastCount = 0, counter = 0; //variables for statistics
+	int lastCount = 0, prelastCount = 0, counter = 0; //змінні для статистики
 
-	//IDS algorithm
-	TreeNode* head = new TreeNode(main, 56);
+	//IDS алгоритм
+	TreeNode* head = new TreeNode(new ChessBoard(main), pow(ChessBoard::FIELD_SIZE, 2) - ChessBoard::FIELD_SIZE);
 	TreeNode* temp;	
 	ChessBoardStat* result = NULL;
 	for (int i = 0; i <= max_depth && result == NULL; i++)
@@ -144,7 +142,7 @@ ChessBoardStat* IDS(ChessBoard* main, int max_depth)
 		{
 			ChessBoard* board = new ChessBoard(temp->getNodeData());
 
-			//statistics and deleting tree
+			// статистика і видалення дерева
 			lastCount = head->deleteTree() + 1;
 			counter += lastCount;
 			delete head;
@@ -153,26 +151,27 @@ ChessBoardStat* IDS(ChessBoard* main, int max_depth)
 		}
 		else
 		{
-			//deleting tree and counting statistics
+			// видалення дерева і обчислення статистики
 			prelastCount = head->deleteTree();
 			counter += prelastCount++;
 		}
 	}
 
+	// результат
 	return result;
 }
 
 TreeNode* DLS(TreeNode* src, int limit)
 {
-	//returns src if it is the solution of task
+	// повернення src, якщо він є результатом задачі
 	if (!src->getNodeData()->queenCheck())
 		return src;
 
-	//stopping recursion
+	// зупинка рекурсії
 	if (limit <= 0)	
 		return NULL;
 	
-	//regular algorithm
+	// подальший алгоритм заглиблення
 	TreeNode* temp;
 	TreeNode* temp2;	
 	std::vector<ChessBoard*> chessBoardArr = src->getNodeData()->boardBestArrGen();
@@ -186,6 +185,6 @@ TreeNode* DLS(TreeNode* src, int limit)
 		//CppCLRWinformsProject::Form1::FormPointer->displayResult(chessBoardArr[i]);
 	}	
 
-	//if the solution wasn't found
+	// якщо розв'язок не знайдено
 	return NULL;
 }

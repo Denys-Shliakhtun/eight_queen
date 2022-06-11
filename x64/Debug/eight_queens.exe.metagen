@@ -20,5 +20,4 @@ Class CppCLRWinformsProject.Form1: AutoLayout, AnsiClass, Class, Public, BeforeF
   Fields:
     CppCLRWinformsProject.Form1 FormPointer : Public, Static
   Methods:
-    InitializeComponent(): PrivateScope, Public, HideBySig
     displayBoard(ChessBoard*): PrivateScope, Public, Static, HideBySig

@@ -138,12 +138,10 @@ namespace CppCLRWinformsProject {
 				{
 					temp->insertQueen(i % (int)pow(10, j + 1) / (int)pow(10, j) - 1, j);
 				}
-				temp2 = LDFS(temp); //choose method here
+				temp2 = IDS(temp, 10); //choose method here
 				if (temp2 == NULL || temp2->queenCheck())
 					return false;
 				displayBoard(temp2);
-				//delete board;
-				//board = new ChessBoard(temp2);
 				delete temp, temp2;
 			}
 		}
@@ -158,8 +156,6 @@ namespace CppCLRWinformsProject {
 		Point a, b;
 		Pen^ p = gcnew Pen(Color::Red);
 		p->Width = 6.0F;
-		//p->DashStyle = Pen::DashStyle::DashPattern::
-		//p->LineJoin = System::Drawing::Drawing2D::LineJoin::Bevel;
 		p->EndCap = Drawing::Drawing2D::LineCap::ArrowAnchor;
 		for (int i = 0; i < posFirst.size(); i++)
 		{

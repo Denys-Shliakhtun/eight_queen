@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "ChessBoard.h"
 #include <algorithm>  
 
@@ -65,7 +65,6 @@ ChessBoard::ChessBoard(ChessBoard* prev, int pos1, int pos2, int orientation)
 	}
 }
 
-//true if can calculate
 bool ChessBoard::queenFirstCheck()
 {
 	int counter = 0;
@@ -80,7 +79,6 @@ bool ChessBoard::queenFirstCheck()
 	return counter == FIELD_SIZE;
 }
 
-//true if queen hits another queen
 bool ChessBoard::queenCheck()
 {
 	bool flag = false;
@@ -91,7 +89,6 @@ bool ChessBoard::queenCheck()
 	return flag;
 }
 
-//true if queen hits another queen
 bool ChessBoard::queenCheckStraight(int a, int b)
 {
 	for (int i = 1; i < FIELD_SIZE; i++)
@@ -104,7 +101,6 @@ bool ChessBoard::queenCheckStraight(int a, int b)
 	return false;
 }
 
-//true if queen hits another queen
 bool ChessBoard::queenCheckDiagonal(int a, int b)
 {
 	int tempa = a, tempb = b;
@@ -145,59 +141,58 @@ bool ChessBoard::queenCheckDiagonal(int a, int b)
 std::vector<std::vector<int>> ChessBoard::getQueenPos()
 {
 	std::vector<std::vector<int>> result;
-	for (int i = 0; i < FIELD_SIZE; i++)
-	{
-		for (int j = 0; j < FIELD_SIZE; j++)
-		{
+	for (int i = 0; i < FIELD_SIZE; i++)	
+		for (int j = 0; j < FIELD_SIZE; j++)		
 			if (board[i][j] != 0)
-				result.push_back({ i, j, board[i][j] });
-		}
-	}
+				result.push_back({ i, j, board[i][j] });		
+	//сортування за номером ферзя
 	sort(result.begin(), result.end(), [](std::vector<int> v1, std::vector<int> v2) {return v1[2] < v2[2]; });
 	return result;
 }
 
 void ChessBoard::insertQueen(int x, int y)
 {
-	unsigned char temp = 0;
-	for (int i = 0; i < FIELD_SIZE; i++)
-		for (int j = 0; j < FIELD_SIZE; j++)
-			if (temp < board[i][j])
-				temp = board[i][j];
-	if(board[x % FIELD_SIZE][y % FIELD_SIZE] == 0)
+	if (board[x % FIELD_SIZE][y % FIELD_SIZE] == 0)
+	{
+		unsigned char temp = 0;
+		for (int i = 0; i < FIELD_SIZE; i++)
+			for (int j = 0; j < FIELD_SIZE; j++)
+				if (temp < board[i][j])
+					temp = board[i][j];
 		board[x % FIELD_SIZE][y % FIELD_SIZE] = temp + 1;
+	}	
 }
 
 void ChessBoard::removeQueen(int x, int y)
 {
-	unsigned char temp = board[x % FIELD_SIZE][y % FIELD_SIZE];
-	if (temp != 0)
-		for (int i = 0; i < FIELD_SIZE; i++)
-			for (int j = 0; j < FIELD_SIZE; j++)
-				if (temp < board[i][j])
-					board[i][j]--;
-	board[x % FIELD_SIZE][y % FIELD_SIZE] = 0;
+	if (board[x % FIELD_SIZE][y % FIELD_SIZE] != 0)
+	{
+		unsigned char temp = board[x % FIELD_SIZE][y % FIELD_SIZE];
+		if (temp != 0)
+			for (int i = 0; i < FIELD_SIZE; i++)
+				for (int j = 0; j < FIELD_SIZE; j++)
+					if (temp < board[i][j])
+						board[i][j]--;
+		board[x % FIELD_SIZE][y % FIELD_SIZE] = 0;
+	}
 }
 
 int ChessBoard::getQueenHitNumber()
 {
 	int count = 0;
-	for (int i = 0; i < FIELD_SIZE; i++)
-	{
-		for (int j = 0; j < FIELD_SIZE; j++)
-		{
+	for (int i = 0; i < FIELD_SIZE; i++)	
+		for (int j = 0; j < FIELD_SIZE; j++)		
 			if (board[i][j] != 0)
 				if (queenCheckDiagonal(i, j))
-					count++;
-		}
-	}
+					count++;	
 	return count;
 }
 
 std::vector<ChessBoard*> ChessBoard::boardBestArrGen()
 {
 	int queenHit = FIELD_SIZE;
-	ChessBoard** tempboard = new ChessBoard * [56];
+	int maxArrSize = pow(FIELD_SIZE, 2) - FIELD_SIZE;
+	ChessBoard** tempboard = new ChessBoard * [maxArrSize];
 	int pos = 0;
 
 	for (int orientation = 1; orientation <= 2; orientation++)
@@ -211,7 +206,7 @@ std::vector<ChessBoard*> ChessBoard::boardBestArrGen()
 			}
 
 	std::vector<ChessBoard*> result;
-	for (int i = 0; i < 56; i++)
+	for (int i = 0; i < maxArrSize; i++)
 	{
 		if (tempboard[i]->getQueenHitNumber() == queenHit)
 			result.push_back(tempboard[i]);
@@ -228,19 +223,15 @@ void ChessBoard::fileOutput(std::ofstream& fileOut)
 
 	for (int i = 0; i < FIELD_SIZE; i++)
 	{
-		for (int j = 0; j < FIELD_SIZE; j++)
-		{
-			fileOut << (board[i][j] == 0 ? '*' : 'q') << ' ';
-		}
+		for (int j = 0; j < FIELD_SIZE; j++)		
+			fileOut << (board[i][j] == 0 ? '*' : 'q') << ' ';		
 		fileOut << std::endl;
 	}
 }
 
 ChessBoard::~ChessBoard()
 {
-	for (int i = 0; i < FIELD_SIZE; i++)
-	{
-		delete[FIELD_SIZE] board[i];
-	}
+	for (int i = 0; i < FIELD_SIZE; i++)	
+		delete[FIELD_SIZE] board[i];	
 	delete[FIELD_SIZE] board;
 }
